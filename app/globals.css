@@ -1,9 +1,13 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+html {
+  scroll-behavior: smooth;
+}
+
 @layer utilities {
   .normal_text {
-    @apply text-[#707070] text-[15px] dark:text-[#C7D1CC];
+    @apply text-[#707070] dark:text-[#C7D1CC];
   }
   .flex-center {
     @apply flex items-center justify-center;
@@ -11,8 +15,65 @@
   .flex-between {
     @apply flex items-center justify-between;
   }
+  .header_text {
+    @apply text-[#393939] dark:text-[#F1F3F2];
+  }
+  .food__bg {
+    @apply bg-white dark:bg-[#27302C];
+  }
 }
 
 .dark_shadow {
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header_grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.bd-container {
+  max-width: 960px;
+  width: calc(100% - 2rem);
+  margin-left: var(--mb-2);
+  margin-right: var(--mb-2);
+}
+
+@media screen and (min-width: 960px) {
+  .bd-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.services__container {
+  row-gap: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.menu__container {
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+  .menu__container {
+    grid-template-columns: repeat(3, 210px);
+    column-gap: 4rem;
+  }
+}
+
+.app__container {
+  column-gap: 7rem;
+}
+
+.footer__container {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  row-gap: 2rem;
+}
+
+@media screen and (min-width: 576px) {
+  .app__container {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+  }
 }
