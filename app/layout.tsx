@@ -4,11 +4,17 @@ import ThemeProvider from "@/components/theme/Theme-provider";
 import Dropdown from "@/components/nav/Dropdown";
 import { ModalProvider } from "@/context/ModalContext";
 import Navbar from "@/components/nav/Navbar";
+import { Poppins } from "next/font/google";
 
 export const metadata: Metadata = {
   title: "Havilah test",
   description: "Developed by Godwin",
 };
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export default function RootLayout({
   children,
@@ -17,7 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`bg-[#FBFEFD] dark:bg-[#1D2521] normal-text px-4`}>
+      <body
+        className={`bg-[#FBFEFD] dark:bg-[#1D2521] normal-text ${poppins.className}`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -26,14 +34,17 @@ export default function RootLayout({
         >
           <div>
             <ModalProvider>
-              <div className="relative mb-[50px]">
+              <div className="relative">
                 <Navbar />
               </div>
               <div className="relative">
                 <Dropdown />
               </div>
             </ModalProvider>
-            {children}
+            <div className="px-7 md:px-20 w-[100%] flex-center">
+              {" "}
+              {children}
+            </div>
           </div>
         </ThemeProvider>
       </body>
